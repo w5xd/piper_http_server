@@ -1,0 +1,13 @@
+#this script runs on the linux system
+cd "$(dirname "$0")"
+[ ! -d model ] && mkdir model
+cd model
+if [ -n "$1" ]; then
+    ls *.onnx* 1>/dev/null 2>&1
+    [ $? -eq 0 ] && rm *.onnx*
+    wget -nv -t 1 "$1"
+    [ $? -ne 0 ] && echo failed && exit 1
+    wget -nv -t 1 "$1".json
+else
+    echo "No URL specified" >&2
+fi

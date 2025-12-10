@@ -1,2 +1,3 @@
 export LD_LIBRARY_PATH=/home/writelog/piper_http_server/piper1-gpl/libpiper/install/:/home/writelog/piper_http_server/piper1-gpl/libpiper/install/lib/
+#Script fails if there is more than one .onnx file in ~/model directory
 ./piper_http_server/build/piper_cpp_http_server model/*.onnx ./piper_http_server/piper1-gpl/libpiper/install/espeak-ng-data/

@@ -14,5 +14,4 @@ set linux=/mnt/%drlc%%setwsl%
 rem except that it now needs forward slash
 set "linux=%linux:\=/%"
 rem copy contents of local linuxScripts to ~ directory in linux, setting them to executable as we go
-rem wsl -d u_piper2 -u writelog --cd "~" -e bash -c "find \""%linux%/linuxScripts/\"" -type f | xargs -I {} sh -c 'cp {} . ; basename {}' | xargs chmod +x"
 wsl -d u_piper2 -u writelog --cd "~" -e bash -c "find \""%linux%/linuxScripts/\"" -type f | xargs -I {} sh -c 'cp {} . ; basename {}' | xargs -I X sh -c 'sed s/\\r$// X >X.tmp ; mv X.tmp X; chmod +x X'"

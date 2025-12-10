@@ -1,4 +1,8 @@
 #this script runs on the linux system
+#if a subdirectory named "model" does not exist, create it.
+#rm any existing .onnx* files in that subdirectory
+#wget the URL on the command line along with 
+#wget of the URL with ".json" appended.
 cd "$(dirname "$0")"
 [ ! -d model ] && mkdir model
 cd model

@@ -1,3 +1,19 @@
+#Run the piper_http_server
 export LD_LIBRARY_PATH=/home/writelog/piper_http_server/piper1-gpl/libpiper/install/:/home/writelog/piper_http_server/piper1-gpl/libpiper/install/lib/
 #Script fails if there is more than one .onnx file in ~/model directory
-./piper_http_server/build/piper_cpp_http_server model/*.onnx ./piper_http_server/piper1-gpl/libpiper/install/espeak-ng-data/
+filex=("./model/*.onnx*")
+declare -i total=0
+declare -i json=0
+for fn in $filex; do
+        total+=1
+        [[ "$fn" == *.json ]] && json+=1
+done
+if [[ $total != "2"  ||  $json != "1" ]]; then
+        echo "The $PWD/model directory not setup "
+else
+    while true
+    do
+        ./piper_http_server/build/piper_cpp_http_server model/*.onnx ./piper_http_server/piper1-gpl/libpiper/install/espeak-ng-data/
+        echo "Oops: restarting piper_http_server"
+    done
+fi

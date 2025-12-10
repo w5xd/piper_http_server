@@ -1,5 +1,5 @@
 @echo off
-echo This command removes the u_piper2 distribution from WSL
+echo This command removes the u_piper2 distribution from WSL.
 echo The piper_http_server cannot be run again until you repeat
 echo run_once_to_setup.bat
 set /p yesno=Do you wish to proceed? [Y/N]

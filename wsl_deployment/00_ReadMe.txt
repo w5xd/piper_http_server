@@ -5,6 +5,14 @@ The files in this archive invoke WSL (windows subsystem for linux) to (first) cr
 wsl "distribution" named u_piper2. (wsl --distribution u_piper2)  Below, it is used for 
 text-to-speech. WSL is a Microsoft product ONLY available on Windows 10 and later.
 
+PREREQUISITE:
+The Windows Subsystem For Linux, WSL, is not installed in Windows by default. 
+You can start the default install from here. It will require a reboot.
+	0_install_WSL.bat
+
+The remainder of these scripts can (and should) be run by the same Windows user
+as you run WriteLog.
+
 Start with:
 	1_run_once_to_setup.bat
 We must be co-located with the (very large) u_piper2.tar.gz

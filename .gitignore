@@ -6,4 +6,7 @@ cmake_install.cmake
 *~
 CMakeCache.txt
 lib/
+out/
+install/
 writelog_piper_scripts_unzip_me_first.zip
+writelog_windows_http_piper.zip

@@ -4,7 +4,6 @@
 cmake_minimum_required (VERSION 3.11)
 option(SIMULATE_PIPER "Stub out piper calls" ON)
 
-
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
@@ -55,8 +54,12 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 # TODO: Add tests and install targets if needed.
-install (TARGETS piper_cpp_http_server demo)
+install (TARGETS piper_cpp_http_server)
 if (WIN32)
-install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)
 endif()
 install (DIRECTORY piper1-gpl/libpiper/install/espeak-ng-data DESTINATION espeak-ng-data)
+install (DIRECTORY windows_deployment/model DESTINATION .)
+install (FILES windows_deployment/run_piper_server.bat DESTINATION .)
+install (FILES windows_deployment/ReadMe.txt DESTINATION .)
+install (FILES JsonSaveAs.png DESTINATION .)

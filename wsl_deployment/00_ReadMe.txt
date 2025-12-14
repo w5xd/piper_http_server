@@ -1,5 +1,6 @@
 (c) 2025 by Wayne E. Wright, W5XD. WriteLog Contesting Software, LLC
-This software is licensed under the GPL
+This software is licensed under the GPL. See https://github.com/w5xd/piper_http_server
+VERSION 1.0
 
 The files in this archive invoke WSL (windows subsystem for linux) to (first) create a
 wsl "distribution" named u_piper2. (wsl --distribution u_piper2)  Below, it is used for 

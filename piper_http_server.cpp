@@ -30,7 +30,7 @@ std::cout << "This server serves HTTP requests but does not actually call piper.
 #endif
 
     std::vector<std::string> args;
-    for (unsigned i = 1; i < argc; i++)
+    for (unsigned i = 1; i < static_cast<unsigned>(argc); i++)
     {
         const char *pArg = argv[i];
         if (*pArg != '-')

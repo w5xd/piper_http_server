@@ -11,6 +11,13 @@ The http server here publishes an http interface inspired by that one at piper1-
 not the same. One big difference is that piper1-gpl supports "Content-type: audio/wav",
 while this one supports only "Content-type: audio/pcm".
 
+<h4>Command line build</h4>
+<pre><code>cmake -B build -DCMAKE_INSTALL_PREFIX="./install" -DSIMULATE_PIPER=NO
+cmake --build build
+cmake --install build
+</code></pre>
+
+<h4>Server behavior</h4>
 This server's intended purpose is localhost only, and with a single
 performance-demanding client. It loads only one piper onnx voice model
 and only allows one thread to access piper at a time.

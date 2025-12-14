@@ -2,7 +2,7 @@
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.11)
-option(SIMULATE_PIPER "Stub out piper calls" ON)
+option(SIMULATE_PIPER "Stub out piper calls" OFF)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -10,12 +10,10 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-set (wbuild True)
-
 include_directories(piper1-gpl/libpiper/include)
-if (wbuild)
-include_directories(c:/dev/boost/boost_1_82_0/) #I haven't figured out the general way to find boost 
+if ("${BOOST_ROOT}" STREQUAL "")
 else()
+	include_directories(${BOOST_ROOT}) 
 endif()
 
 #the submodule piper1-gpl must already have been build and in release mode
@@ -59,7 +57,9 @@ if (WIN32)
 install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)
 endif()
 install (DIRECTORY piper1-gpl/libpiper/install/espeak-ng-data DESTINATION espeak-ng-data)
+if (WIN32)
 install (DIRECTORY windows_deployment/model DESTINATION .)
 install (FILES windows_deployment/run_piper_server.bat DESTINATION .)
 install (FILES windows_deployment/ReadMe.txt DESTINATION .)
 install (FILES JsonSaveAs.png DESTINATION .)
+endif()

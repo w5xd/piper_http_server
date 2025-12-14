@@ -15,6 +15,11 @@
           "name": "SIMULATE_PIPER",
           "value": "False",
           "type": "BOOL"
+        },
+        {
+          "name": "BOOST_ROOT",
+          "value": "C:/dev/boost/boost_1_82_0",
+          "type": "STRING"
         }
       ]
     },
@@ -33,6 +38,11 @@
           "name": "SIMULATE_PIPER",
           "value": "False",
           "type": "BOOL"
+        },
+        {
+          "name": "BOOST_ROOT",
+          "value": "C:/dev/boost/boost_1_82_0",
+          "type": "STRING"
         }
       ]
     }

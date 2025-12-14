@@ -15,7 +15,7 @@ for %%f in ("model\*.onnx") do (
 	rem infinite loop the server
 	:rerun_on_quit 
 	rem the -DIAG makes it print to its console. you may remove it.
-	.\bin\piper_cpp_http_server.exe !onnx! %cd%\espeak-ng-data -DIAG
+	.\bin\piper_cpp_http_server.exe !onnx! %cd%\espeak-ng-data -DIAG -a localhost
 	goto rerun_on_quit
 )
 echo THE ONNX file and its json file must be in the model directory here: %cd%\model

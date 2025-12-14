@@ -15,7 +15,7 @@ bool diagnosticHttpOut = false;
 
 static void usage()
 {
-    std::cout << "Usage: piper_http_server [-dDIAG] <model-file> <espeak-dir> [<port>] [<num threads>] " << std::endl;
+    std::cout << "Usage: piper_http_server [-dDIAG] <model-file> <espeak-dir> [-a <address>] [-p <port>] [-n <num threads>] " << std::endl;
 }
 
 int main(int argc, char** argv) {
@@ -29,7 +29,11 @@ std::cout <<
 std::cout << "This server serves HTTP requests but does not actually call piper. For debugging only.\n";
 #endif
 
+    std::string port = "5000";
+    std::string address = "0.0.0.0";
+    std::string numThreads = "2";
     std::vector<std::string> args;
+    bool ok = true;
     for (unsigned i = 1; i < static_cast<unsigned>(argc); i++)
     {
         const char *pArg = argv[i];
@@ -38,20 +42,54 @@ std::cout << "This server serves HTTP requests but does not actually call piper.
         else
         {
             std::string a;
+            std::string b;
             for (;*pArg;pArg++)
+            {
                 a += toupper(*pArg);
+                b += *pArg;
+            }
             if (a == "-DIAG")
                 diagnosticHttpOut = true;
+            else if (b == "-p")
+            {
+                if (++i < argc)
+                    port = argv[i];
+                else
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            else if (b == "-a")
+            {
+                if (++i < argc)
+                    address = argv[i];
+                else
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            else if (b == "-n")
+            {
+                if (++i < argc)
+                    numThreads = argv[i];
+                else
+                {
+                    ok = false;
+                    break;
+                }
+            }
             else
             {
-                std::cerr << "Unknown option " << a << std::endl;
+                std::cerr << "Unknown option " << b << std::endl;
                 usage();
                 return 1;
             }
         }
     }
 
-    if (args.size() < 2 || args.size() > 4)
+    if (!ok || args.size() != 2)
     {
         usage();
         return 1;
@@ -59,17 +97,11 @@ std::cout << "This server serves HTTP requests but does not actually call piper.
     std::string onnx = args[0];
     std::string onnx_json = onnx + ".json";
     std::string espeak = args[1];
-    std::string port = "5000";
-    std::string address = "0.0.0.0";
-    if (args.size() > 2)
-        port = args[2];
-    std::string numThreads = "1";
-    if (args.size() > 3)
-        numThreads = args[3];
     try {
+    static unsigned MAX_THREADS = 10;
         piper_manager::initialize(onnx, onnx_json, espeak);
         auto p = piper_manager::getGlobalInstance();
-        std::size_t num_threads = std::stoi(numThreads);
+        std::size_t num_threads = std::min(static_cast<unsigned>(std::stoi(numThreads)), MAX_THREADS);
         http::server3::server s(address, port, "/", num_threads);
 
         // Run the server until stopped.

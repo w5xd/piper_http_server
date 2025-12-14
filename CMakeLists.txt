@@ -14,10 +14,11 @@ set (wbuild True)
 
 include_directories(piper1-gpl/libpiper/include)
 if (wbuild)
-include_directories(c:/dev/boost/boost_1_82_0/)
+include_directories(c:/dev/boost/boost_1_82_0/) #I haven't figured out the general way to find boost 
 else()
 endif()
 
+#the submodule piper1-gpl must already have been build and in release mode
 link_directories(piper1-gpl/libpiper/install piper1-gpl/libpiper/install/lib)
 
 project ("piper_cpp_http_server")
@@ -53,7 +54,6 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET piper_cpp_http_server PROPERTY CXX_STANDARD 20)
 endif()
 
-# TODO: Add tests and install targets if needed.
 install (TARGETS piper_cpp_http_server)
 if (WIN32)
 install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)

@@ -3,16 +3,16 @@ An http server that generates text-to-speech using piper1-gpl
 
 This http server extends the product published at https://github.com/OHF-Voice/piper1-gpl. 
 The web server published there, https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/API_HTTP.md
-has a usable programming interface, http over tcp, for amateur radio contesting. But
+has a programming interface, http over tcp, that is clearly useful for amateur radio contesting. But
 it does not have the performance desired. In particular, it does not support the
 http "Connection:keep-alive" header.
 
 The http server here publishes an http interface inspired by that one at piper1-gpl, but is
-not the same. One big difference is that piper1-gpl supports "Content-type: audio/wav",
+not the same. The original, at piper1-gpl supports "Content-type: audio/wav",
 while this one supports only "Content-type: audio/pcm".
 
 <h4>Command line build</h4>
-<pre><code>cmake -B build -DCMAKE_INSTALL_PREFIX="./install" -DSIMULATE_PIPER=NO
+<pre><code>cmake -B build -DCMAKE_INSTALL_PREFIX="install" -DSIMULATE_PIPER=NO
 cmake --build build
 cmake --install build
 </code></pre>

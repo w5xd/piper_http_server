@@ -34,7 +34,7 @@ std::cout << "This server serves HTTP requests but does not actually call piper.
     std::string numThreads = "2";
     std::vector<std::string> args;
     bool ok = true;
-    for (unsigned i = 1; i < static_cast<unsigned>(argc); i++)
+    for (int i = 1; i < argc; i++)
     {
         const char *pArg = argv[i];
         if (*pArg != '-')

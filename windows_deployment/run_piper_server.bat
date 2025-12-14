@@ -1,13 +1,11 @@
 @echo off
-rem This script runs the piper_cpp_http_server in the bin directory using THE onnx model 
+rem This script runs the piper_cpp_http_server in the bin directory using the onnx model 
 rem that must already be in the model directory. (If there is more than one, the script picks one!)
 setlocal EnableExtensions
 setlocal EnableDelayedExpansion 
 for %%f in ("model\*.onnx") do (
 	set onnx=%%~ff
 	set json=!onnx!.json
-	echo onnx !onnx!
-	echo json !json!
 	if not exist "!json!"  (
 			echo THE .json file, !json!, must be colocated with onnx!
 			goto :eof

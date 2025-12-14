@@ -13,7 +13,7 @@
       "variables": [
         {
           "name": "SIMULATE_PIPER",
-          "value": "True",
+          "value": "False",
           "type": "BOOL"
         }
       ]
@@ -31,7 +31,7 @@
       "variables": [
         {
           "name": "SIMULATE_PIPER",
-          "value": "True",
+          "value": "False",
           "type": "BOOL"
         }
       ]

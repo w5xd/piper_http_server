@@ -1,6 +1,6 @@
 [submodule "piper1-gpl"]
 	path = piper1-gpl
-	url = https://github.com/OHF-Voice/piper1-gpl.git
+	url = https://github.com/w5xd/piper1-gpl.git
 [submodule "changeCase"]
 	path = WindowsChangeCase
 	url = https://github.com/w5xd/WindowsChangeCase.git

@@ -55,3 +55,8 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 # TODO: Add tests and install targets if needed.
+install (TARGETS piper_cpp_http_server demo)
+if (WIN32)
+install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
+install (DIRECTORY piper1-gpl/libpiper/install/espeak-ng-data DESTINATION espeak-ng-data)

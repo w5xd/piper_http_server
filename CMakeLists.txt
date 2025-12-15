@@ -49,8 +49,10 @@ else()
 	target_link_libraries(demo piper onnxruntime)
 endif()
 
+if (WIN32)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 	target_link_libraries(piper_cpp_http_server ws2_32 wsock32)
+endif()
 endif()
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

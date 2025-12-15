@@ -26,7 +26,8 @@ if (SIMULATE_PIPER)
 endif()
 
 if (WIN32)
-	add_compile_definitions(-D_WIN32_WINNT=0x0601)
+	message( "WIN32 is set to " ${WIN32})
+	add_compile_definitions(_WIN32_WINNT=0x0601)
 endif()
 
 # Add source to this project's executable.
@@ -48,13 +49,22 @@ else()
 	target_link_libraries(demo piper onnxruntime)
 endif()
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	target_link_libraries(piper_cpp_http_server ws2_32 wsock32)
+endif()
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET piper_cpp_http_server PROPERTY CXX_STANDARD 20)
 endif()
 
 install (TARGETS piper_cpp_http_server)
 if (WIN32)
-install (FILES piper1-gpl/libpiper/install/piper.dll  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)
+install (FILES  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+install (FILES piper1-gpl/libpiper/install/piper.dll   DESTINATION bin)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+install (FILES piper1-gpl/libpiper/install/libpiper.dll  DESTINATION bin)
+endif()
 endif()
 install (DIRECTORY piper1-gpl/libpiper/install/espeak-ng-data DESTINATION espeak-ng-data)
 if (WIN32)

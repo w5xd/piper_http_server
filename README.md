@@ -13,7 +13,7 @@ while this one supports only "Content-type: audio/pcm".
 
 <h4>Command line build</h4>
 <pre><code>cmake -B build -DCMAKE_INSTALL_PREFIX="install" -DBOOST_ROOT=path-to-boost
-cmake --build build
+cmake --build build --config Release
 cmake --install build
 </code></pre>
 

@@ -26,7 +26,6 @@ if (SIMULATE_PIPER)
 endif()
 
 if (WIN32)
-	message( "WIN32 is set to " ${WIN32})
 	add_compile_definitions(_WIN32_WINNT=0x0601)
 endif()
 

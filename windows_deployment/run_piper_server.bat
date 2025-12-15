@@ -10,6 +10,7 @@ for %%f in ("model\*.onnx") do (
 			echo THE .json file, !json!, must be colocated with onnx!
 			goto :eof
 	)
+	echo Using voice model: !onnx!
 	rem infinite loop the server
 	:rerun_on_quit 
 	rem the -DIAG makes it print to its console. you may remove it.

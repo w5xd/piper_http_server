@@ -12,6 +12,9 @@ not the same. The original, at piper1-gpl supports "Content-type: audio/wav",
 while this one supports only "Content-type: audio/pcm".
 
 <h4>Command line build</h4>
+<p>Prerequisite: 
+Build the submodule at piper1-gpl/libpiper. Follow the README.md there. 
+Then CD to here and do this:</p>
 <pre><code>cmake -B build -DCMAKE_INSTALL_PREFIX="install" -DBOOST_ROOT=path-to-boost
 cmake --build build --config Release
 cmake --install build

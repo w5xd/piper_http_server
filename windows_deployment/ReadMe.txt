@@ -1,7 +1,7 @@
 (c) 2025 by Wayne E. Wright, W5XD. WriteLog Contesting Software, LLC
 This software is licensed under the GPL. see https://github.com/w5xd/piper_http_server
 The piper1-gpl Text-To-Speech package is here: https://github.com/OHF-Voice/piper1-gpl
-VERSION 1.1
+VERSION 1.2
 
 This http server is designed by the team at WriteLog Contesting Software, LLC.
 Its http interface is compatible with what WriteLog version 12.93 and later expects when you
@@ -36,10 +36,6 @@ Right click the Raw button on huggingface.com and use Save-Link-As... See JsonSa
 file://JsonSaveAs.png
 
 4. run_piper_server.bat
-The first time you run it, Windows may pop up a box requiring permission for it
-to access the network. It needs permission, but only to receive connections on this
-local machine.
-
 It will pick up only one .onnx file in the model directory. Its up to you make sure 
 there is only one there. The server runs forever. If it should crash, the run_piper_server 
 loops back and starts it again. You have kill it. Either close its Command window, or 
@@ -47,3 +43,13 @@ type CTRL+C at it.
 
 5. Training piper to use your own voice is a large project of its own. The WriteLog
 team is not involved in creating voice models. It can be done.
+
+Version History
+VERSION 1.2
+Use Release build of libpiper (from here: https://github.com/OHF-Voice/piper1-gpl)
+
+VERSION 1.1 
+Support command line option to listen only on localhost (avoids firewall warning.)
+
+VERSION 1.0
+First version on Windows X64

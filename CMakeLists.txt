@@ -60,7 +60,10 @@ endif()
 
 install (TARGETS piper_cpp_http_server)
 if (WIN32)
-install (FILES  piper1-gpl/libpiper/install/lib/onnxruntime.dll DESTINATION bin)
+install (FILES 
+		piper1-gpl/libpiper/install/lib/onnxruntime.dll 
+                piper1-gpl/libpiper/install/lib/onnxruntime_providers_shared.dll
+		DESTINATION bin)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 install (FILES piper1-gpl/libpiper/install/piper.dll   DESTINATION bin)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

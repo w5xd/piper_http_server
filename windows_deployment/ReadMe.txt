@@ -1,7 +1,7 @@
-(c) 2025 by Wayne E. Wright, W5XD. WriteLog Contesting Software, LLC
+(c) 2026 by Wayne E. Wright, W5XD. WriteLog Contesting Software, LLC
 This software is licensed under the GPL. see https://github.com/w5xd/piper_http_server
 The piper1-gpl Text-To-Speech package is here: https://github.com/OHF-Voice/piper1-gpl
-VERSION 1.2
+VERSION 1.4
 
 This http server is designed by the team at WriteLog Contesting Software, LLC.
 Its http interface is compatible with what WriteLog version 12.93 and later expects when you
@@ -45,7 +45,7 @@ type CTRL+C at it.
 team is not involved in creating voice models. It can be done.
 
 Version History
-VERSION 1.2
+VERSION 1.4
 Use Release build of libpiper (from here: https://github.com/OHF-Voice/piper1-gpl)
 
 VERSION 1.1 
